@@ -26,26 +26,26 @@ public class DiscussPostService {
         return discussPostMapper.selectDiscussPostRows(userId);
     }
 
-    public int addDiscussPost(DiscussPost post){
-        System.out.println(post);
-        if(post == null){
-            throw new IllegalArgumentException("参数不能为空");
+    public int addDiscussPost(DiscussPost post) {
+        if (post == null) {
+            throw new IllegalArgumentException("参数不能为空!");
         }
-        //转义HTML标记
+
+        // 转义HTML标记
         post.setTitle(HtmlUtils.htmlEscape(post.getTitle()));
         post.setContent(HtmlUtils.htmlEscape(post.getContent()));
-
-        //过滤敏感词
+        // 过滤敏感词
         post.setTitle(sensitiveFilter.filter(post.getTitle()));
         post.setContent(sensitiveFilter.filter(post.getContent()));
+
         return discussPostMapper.insertDiscussPost(post);
     }
 
-    public DiscussPost findDiscussPostById(int id){
+    public DiscussPost findDiscussPostById(int id) {
         return discussPostMapper.selectDiscussPostById(id);
     }
 
-    public int updateCommentCount(int id, int commentCount){
+    public int updateCommentCount(int id, int commentCount) {
         return discussPostMapper.updateCommentCount(id, commentCount);
     }
 

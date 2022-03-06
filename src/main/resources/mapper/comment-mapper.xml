@@ -5,19 +5,19 @@
 <mapper namespace="com.nowcoder.community.dao.CommentMapper">
 
     <sql id="selectFields">
-        id,user_id,entity_type,entity_id,target_id,content,status,create_time
+        id, user_id, entity_type, entity_id, target_id, content, status, create_time
     </sql>
 
     <sql id="insertFields">
-        user_id,entity_type,entity_id,target_id,content,status,create_time
+        user_id, entity_type, entity_id, target_id, content, status, create_time
     </sql>
 
-    <select id="selectCommentByEntity" resultType="Comment">
+    <select id="selectCommentsByEntity" resultType="Comment">
         select <include refid="selectFields"></include>
         from comment
         where status = 0
-        and entity_type=#{entityType}
-        and entity_id=#{entityId}
+        and entity_type = #{entityType}
+        and entity_id = #{entityId}
         order by create_time asc
         limit #{offset}, #{limit}
     </select>
@@ -26,13 +26,13 @@
         select count(id)
         from comment
         where status = 0
-        and entity_type=#{entityType}
-        and entity_id=#{entityId}
+        and entity_type = #{entityType}
+        and entity_id = #{entityId}
     </select>
 
     <insert id="insertComment" parameterType="Comment">
-        insert into comment (<include refid="insertFields"></include>)
-        values (#{userId},#{entityType},#{entityId},#{targetId},#{content},#{status},#{createTime})
+        insert into comment(<include refid="insertFields"></include>)
+        values(#{userId},#{entityType},#{entityId},#{targetId},#{content},#{status},#{createTime})
     </insert>
 
 </mapper>

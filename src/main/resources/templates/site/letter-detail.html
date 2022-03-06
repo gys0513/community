@@ -123,7 +123,7 @@
 						<div class="toast show d-lg-block" role="alert" aria-live="assertive" aria-atomic="true">
 							<div class="toast-header">
 								<strong class="mr-auto" th:utext="${map.fromUser.username}">落基山脉下的闲人</strong>
-								<small th:text="${#dates.format(map.letter.createTime, 'yyyy-MM-dd HH:mm:ss')}">2019-04-25 15:49:32</small>
+								<small th:text="${#dates.format(map.letter.createTime,'yyyy-MM-dd HH:mm:ss')}">2019-04-25 15:49:32</small>
 								<button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
@@ -133,7 +133,6 @@
 							</div>
 						</div>
 					</li>
-
 				</ul>
 				<!-- 分页 -->
 				<nav class="mt-5" th:replace="index::pagination">
@@ -221,11 +220,9 @@
 	<script th:src="@{/js/global.js}"></script>
 	<script th:src="@{/js/letter.js}"></script>
 	<script>
-		function back(){
+		function back() {
 			location.href = CONTEXT_PATH + "/letter/list";
 		}
-
 	</script>
-
 </body>
 </html>

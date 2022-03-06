@@ -1,7 +1,6 @@
 package com.nowcoder.community.aspect;
 
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -18,22 +17,23 @@ import java.util.Date;
 @Component
 @Aspect
 public class ServiceLogAspect {
+
     private static final Logger logger = LoggerFactory.getLogger(ServiceLogAspect.class);
 
     @Pointcut("execution(* com.nowcoder.community.service.*.*(..))")
-    private void pointcut(){
+    public void pointcut() {
 
     }
 
     @Before("pointcut()")
-    public void before(JoinPoint joinPoint){
-        //用户【1，2，3，4】，在【XXX】，访问了【com.nowcoder.community.service.XXX()】
-        ServletRequestAttributes attributes = (ServletRequestAttributes)RequestContextHolder.getRequestAttributes();
+    public void before(JoinPoint joinPoint) {
+        // 用户[1.2.3.4],在[xxx],访问了[com.nowcoder.community.service.xxx()].
+        ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
         String ip = request.getRemoteHost();
         String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
-        String target = joinPoint.getSignature().getDeclaringTypeName() + "." +  joinPoint.getSignature().getName(); //类型名和方法名
-        logger.info(String.format("用户[%s], 在[%s], 访问了[%s]", ip, now, target));
+        String target = joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName();
+        logger.info(String.format("用户[%s],在[%s],访问了[%s].", ip, now, target));
     }
 
 }

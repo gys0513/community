@@ -12,4 +12,5 @@ public class AlphaConfig {
     public SimpleDateFormat simpleDateFormat() {
         return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     }
+
 }

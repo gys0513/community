@@ -45,8 +45,10 @@ public class HomeController implements CommunityConstant {
                 map.put("post", post);
                 User user = userService.findUserById(post.getUserId());
                 map.put("user", user);
+
                 long likeCount = likeService.findEntityLikeCount(ENTITY_TYPE_POST, post.getId());
                 map.put("likeCount", likeCount);
+
                 discussPosts.add(map);
             }
         }
@@ -55,7 +57,7 @@ public class HomeController implements CommunityConstant {
     }
 
     @RequestMapping(path = "/error", method = RequestMethod.GET)
-    public String getErrorPage(){
+    public String getErrorPage() {
         return "/error/500";
     }
 

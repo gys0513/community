@@ -69,9 +69,8 @@
 						<label for="head-image" class="col-sm-2 col-form-label text-right">选择头像:</label>
 						<div class="col-sm-10">
 							<div class="custom-file">
-								<input type="file" class="custom-file-input" id="head-image"
-									   th:class="|form-control ${error!=null?'is-invalid':''}|"
-									   name="headerImage" lang="es" required="">
+								<input type="file" th:class="|custom-file-input ${error!=null?'is-invalid':''}|"
+									   id="head-image" name="headerImage" lang="es" required="">
 								<label class="custom-file-label" for="head-image" data-browse="文件">选择一张图片</label>
 								<div class="invalid-feedback" th:text="${error}">
 									该账号不存在!
