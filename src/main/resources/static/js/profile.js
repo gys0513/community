@@ -7,7 +7,7 @@ function follow() {
 	if($(btn).hasClass("btn-info")) {
 		// 关注TA
 		$.post(
-		    CONTEXT_PATH + "/follow",
+		    "/community" + "/follow",
 		    {"entityType":3,"entityId":$(btn).prev().val()},
 		    function(data) {
 		        data = $.parseJSON(data);
