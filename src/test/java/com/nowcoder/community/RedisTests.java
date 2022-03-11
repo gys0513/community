@@ -118,6 +118,8 @@ public class RedisTests {
         System.out.println(obj);
     }
 
+    // 统计20万个重复数据的独立额
+
 
 
 }

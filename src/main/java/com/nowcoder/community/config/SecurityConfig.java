@@ -61,7 +61,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements Comm
                         AUTHORITY_MODERATOR
                 )
                 .antMatchers(
-                        "/discuss/delete"
+                        "/discuss/delete",
+                        "/data/**"
                 )
                 .hasAnyAuthority(
                         AUTHORITY_ADMIN
@@ -89,7 +90,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements Comm
                         }
                     }
                 )
-                .accessDeniedHandler( //权限不足时这么处理
+                .accessDeniedHandler( //权限不足时怎么处理
                     new AccessDeniedHandler() {
                         @Override
                         public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException e) throws IOException, ServletException {
